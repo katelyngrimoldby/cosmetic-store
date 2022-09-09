@@ -1,0 +1,13 @@
+@import "variables.css";
+
+.link {
+  display: block;
+  width: fit-content;
+  font-family: var(--sans-serif);
+  font-weight: 500;
+  background-color: white;
+  color: var(--grey);
+  border: 2px solid var(--blue);
+  text-decoration: none;
+  padding: 0.25rem 1rem;
+}
