@@ -17,7 +17,7 @@ import email from "./assets/email-outline.svg";
 import phone from "./assets/phone-outline.svg";
 import location from "./assets/map-marker-outline.svg";
 import styles from "./styles/Layout.module.css";
-import "./styles/reset.css";
+import "./styles/global.css";
 
 function Layout() {
   const [visible, setVisible] = useState(false);
