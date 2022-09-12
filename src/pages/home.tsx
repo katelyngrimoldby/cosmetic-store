@@ -1,28 +1,37 @@
 import { Link } from "react-router-dom";
 import ButtonLink from "../components/ButtonLink";
+import instagram1 from "../assets/instagram-1.jpg";
+import instagram2 from "../assets/instagram-2.jpg";
+import instagram3 from "../assets/instagram-3.jpg";
+import instagram4 from "../assets/instagram-4.jpg";
+import styles from "../styles/home.module.css";
 
 const Home = () => {
   return (
     <main>
-      <header>
-        <h1>Makeup is for everyone</h1>
-        <p>
-          We offer a wide range of products so everyone can find their perfect
-          match.
-        </p>
-        <ButtonLink location="/shop" value="Shop Now" />
+      <header className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1>Makeup is for everyone</h1>
+          <p>
+            We offer a wide range of products so everyone can find their perfect
+            match.
+          </p>
+          <ButtonLink location="/shop" value="Shop Now" />
+        </div>
       </header>
-      <section>
+      <section id="bestsellers" className={styles.section}>
         <h2>Our Bestsellers</h2>
         <ButtonLink location="/shop" value="View More" />
       </section>
-      <section>
+      <section id="categories" className={styles.section}>
         <h2>Categories</h2>
         {/* To be inputted later */}
       </section>
-      <section>
-        <h2>About Miralou</h2>
-        <div>
+      <section id="about" className={styles.about}>
+        <div className={styles.header}>
+          <h2>About Miralou</h2>
+        </div>
+        <div className={styles.content}>
           <p>
             Nam at quam pellentesque, vehicula mi vel, tempus nulla. Nulla porta
             nulla vitae dolor ultrices malesuada. Aenean dignissim justo congue,
@@ -35,21 +44,33 @@ const Home = () => {
           <Link to="/about">Learn More</Link>
         </div>
       </section>
-      <section>
+      <section id="reviews" className={styles.section}>
         <span>What Our Customers Say</span>
         <h2>Latest Reviews</h2>
         {/* To be done later */}
       </section>
-      <section>
+      <section id="instagram" className={styles.instagram}>
         <h2>Follow Us On Instagram</h2>
         <span>@miralou</span>
+        <div>
+          <img src={instagram1} alt="" />
+          <img src={instagram2} alt="" />
+          <img src={instagram3} alt="" />
+          <img src={instagram4} alt="" />
+        </div>
       </section>
-      <section>
-        <h2>Subscribe to Get More Fun</h2>
-        <p>
-          Subscribe to rcieve 10% off your next purchase and continue recieve
-          exclusive offers
-        </p>
+      <section id="newsletter" className={styles.newsletter}>
+        <div className={styles.text}>
+          <h2>Subscribe to Get More Fun</h2>
+          <p>
+            Subscribe to recieve 10% off your next purchase and continue recieve
+            exclusive offers
+          </p>
+        </div>
+        <form>
+          <input type="email" placeholder="Enter Your Email" />
+          <button onClick={(e) => e.preventDefault()}>Subscribe</button>
+        </form>
       </section>
     </main>
   );
