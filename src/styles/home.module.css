@@ -1,0 +1,269 @@
+@import "variables.css";
+
+@media screen and (min-width: 0px) {
+  .hero {
+    position: relative;
+    background-color: white;
+    height: fit-content;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background-image: url("../assets/hero-img.jpg");
+      background-position: center;
+      background-size: cover;
+      opacity: 0.6;
+    }
+
+    .heroContent {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+      padding: 5%;
+      position: relative;
+      text-align: left;
+      color: var(--grey);
+    }
+  }
+
+  .section,
+  .instagram {
+    padding: 2.5rem 5%;
+    text-align: center;
+
+    span {
+      font-family: var(--sans-serif);
+      color: var(--blue);
+    }
+    h2 {
+      color: var(--grey);
+    }
+    &::before {
+      content: "";
+      height: 1px;
+      width: 50px;
+      position: absolute;
+      background-color: var(--blue);
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      text-align: center;
+      transform: translateY(-1.5rem);
+    }
+  }
+  .about {
+    padding: 2.5rem 0;
+
+    .header {
+      padding: 5rem 5%;
+      position: relative;
+      background-color: black;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        background-image: url("../assets/home-about.jpg");
+        background-position: top;
+        background-size: cover;
+        opacity: 0.6;
+      }
+      h2 {
+        color: white;
+        font-family: var(--serif);
+        position: relative;
+        font-size: 2rem;
+      }
+    }
+
+    .content {
+      max-width: 800px;
+      position: relative;
+      background-color: white;
+      width: 90%;
+      margin: 0 auto;
+      padding: 5%;
+      text-align: center;
+      box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1);
+      z-index: 3;
+      margin-top: -3rem;
+      p {
+        color: var(--grey);
+        margin-bottom: 1rem;
+      }
+      a {
+        font-variant: all-small-caps;
+        color: var(--grey);
+        text-decoration: none;
+        font-family: var(--sans-serif);
+        font-weight: 600;
+        &::after {
+          content: " →";
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+  .instagram {
+    h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+    div {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      img {
+        border-radius: 10px;
+        max-width: 200px;
+      }
+    }
+  }
+  .newsletter {
+    position: relative;
+    background-color: black;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    > * {
+      position: relative;
+    }
+
+    h2 {
+      text-align: left;
+      font-family: var(--serif);
+      font-weight: 400;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: var(--light-grey);
+    }
+
+    form {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    input {
+      height: fit-content;
+      width: 100%;
+      max-width: 400px;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 2px;
+      &::placeholder {
+        color: black;
+        font-family: var(--sans-serif);
+      }
+    }
+
+    button {
+      height: fit-content;
+      border: none;
+      color: white;
+      background-color: var(--grey);
+      padding: 0.25rem 1rem;
+      font-family: var(--sans-serif);
+      font-variant: all-small-caps;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 1px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background-image: url("../assets/footer-img.jpg");
+      background-position: center;
+      background-size: cover;
+      opacity: 0.3;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .hero {
+    .heroContent {
+      width: 75%;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+  .instagram {
+    div {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      img {
+        width: 40%;
+        max-width: ;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 786px) {
+  .hero {
+    height: 400px;
+    .heroContent {
+      margin-right: 5%;
+    }
+  }
+  .about {
+    .header {
+      padding: 7rem 5%;
+    }
+    .content {
+      margin-top: -4rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .hero {
+    height: 600px;
+  }
+  .about {
+    .header {
+      padding: 15% 5%;
+    }
+    .content {
+      margin-top: -7rem;
+    }
+  }
+  .newsletter {
+    flex-direction: row;
+    justify-content: center;
+    .text {
+      width: 40%;
+    }
+    form {
+      flex-grow: 1;
+      flex-wrap: nowrap;
+    }
+    input {
+      max-width: 600px;
+    }
+  }
+}
