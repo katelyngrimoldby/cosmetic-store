@@ -21,8 +21,13 @@ const About = () => {
           </p>
         </article>
         <div>
-          <img src={about1} alt="" />
-          <img src={about2} alt="" />
+          <img
+            src={about1}
+            alt="Girl in pink sweater"
+            width="500"
+            height="517"
+          />
+          <img src={about2} alt="Makeup on a table" width="640" height="640" />
         </div>
       </section>
       <div>
