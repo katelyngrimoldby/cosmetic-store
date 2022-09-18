@@ -53,10 +53,20 @@ const Home = () => {
         <h2>Follow Us On Instagram</h2>
         <span>@miralou</span>
         <div>
-          <img src={instagram1} alt="" />
-          <img src={instagram2} alt="" />
-          <img src={instagram3} alt="" />
-          <img src={instagram4} alt="" />
+          <img
+            src={instagram1}
+            alt="Girl holding fragrance box"
+            width="640"
+            height="640"
+          />
+          <img src={instagram2} alt="Makeup brushes" width="640" height="640" />
+          <img src={instagram3} alt="Girl posing" width="640" height="640" />
+          <img
+            src={instagram4}
+            alt="Makeup on counter"
+            width="640"
+            height="640"
+          />
         </div>
       </section>
       <section id="newsletter" className={styles.newsletter}>
