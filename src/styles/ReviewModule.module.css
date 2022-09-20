@@ -43,9 +43,9 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 2rem;
 
     span {
+      cursor: pointer;
       display: inline-block;
       width: 15px;
       height: 15px;
@@ -57,9 +57,10 @@
     }
 
     button {
+      cursor: pointer;
       display: inline-block;
       width: 55px;
-      height: 55x;
+      height: 55px;
       border: none;
       background-color: var(--light-grey);
       color: var(--blue);
@@ -86,6 +87,7 @@
 @media screen and (min-width: 768px) {
   .container {
     button {
+      cursor: pointer;
       flex-shrink: 0;
       display: inline-block;
       width: 75px;
