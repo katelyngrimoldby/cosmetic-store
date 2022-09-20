@@ -8,6 +8,7 @@ import About from "./pages/about";
 import Contact from "./pages/contact";
 import Cart from "./pages/cart";
 import Wishlist from "./pages/wishlist";
+import FAQ from "./pages/faq";
 import NoMatch from "./pages/noMatch";
 import menuOpen from "./assets/menu-open.svg";
 import menuClose from "./assets/menu-close.svg";
@@ -98,17 +99,29 @@ function Layout() {
           <div>
             <h3>Information</h3>
             <ul>
-              <li>About Miralou</li>
-              <li>FAQ</li>
-              <li>Contact Us</li>
+              <li>
+                <Link to="/about">About Miralou</Link>
+              </li>
+              <li>
+                <Link to="/faq">FAQ</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact Us</Link>
+              </li>
             </ul>
           </div>
           <div>
             <h3>Quick Links</h3>
             <ul>
-              <li>Shop</li>
-              <li>Wishlist</li>
-              <li>Cart</li>
+              <li>
+                <Link to="/shop">Shop</Link>
+              </li>
+              <li>
+                <Link to="/wishlist">Wishlist</Link>
+              </li>
+              <li>
+                <Link to="/cart">Cart</Link>
+              </li>
             </ul>
           </div>
           <div>
@@ -172,6 +185,7 @@ root.render(
           <Route path="contact" element={<Contact />} />
           <Route path="cart" element={<Cart />} />
           <Route path="wishlist" element={<Wishlist />} />
+          <Route path="faq" element={<FAQ />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
