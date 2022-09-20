@@ -115,6 +115,14 @@
       font-size: 0.9rem;
       font-weight: 600;
     }
+    a {
+      text-decoration: none;
+      color: var(--grey);
+      &:hover {
+        color: black;
+        font-weight: 700;
+      }
+    }
     p {
       margin-top: 1rem;
       font-size: 0.8rem;
@@ -183,6 +191,9 @@
         flex-direction: row;
         justify-content: flex-end;
       }
+    }
+    .visible {
+      box-shadow: none;
     }
     .navWrapper {
       flex-direction: row;
