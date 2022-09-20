@@ -16,12 +16,11 @@ const TeamCard = ({ name, role, email }: TeamCardProps) => {
       <span className={styles.name}>{name}</span>
       <span className={styles.role}>{role}</span>
       <span className={styles.contact}>
-        <img src={phoneIcon} alt="Phone icon" width="24" height="24" />
-        (805) 235-1414
+        <img src={phoneIcon} alt="Phone icon" width="24" height="24" /> (805)
+        235-1414
       </span>
       <span className={styles.contact}>
-        <img src={emailIcon} alt="Email icon" width="24" height="24" />
-        {email}
+        <img src={emailIcon} alt="Email icon" width="24" height="24" /> {email}
       </span>
     </div>
   );
