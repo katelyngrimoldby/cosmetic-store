@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import ButtonLink from "../components/ButtonLink";
+import ReviewModule from "../components/ReviewModule";
 import instagram1 from "../assets/instagram-1.jpg";
 import instagram2 from "../assets/instagram-2.jpg";
 import instagram3 from "../assets/instagram-3.jpg";
@@ -45,13 +46,13 @@ const Home = () => {
         </div>
       </section>
       <section id="reviews" className={styles.section}>
-        <span>What Our Customers Say</span>
+        <span className={styles.tag}>What Our Customers Say</span>
         <h2>Latest Reviews</h2>
-        {/* To be done later */}
+        <ReviewModule />
       </section>
       <section id="instagram" className={styles.instagram}>
         <h2>Follow Us On Instagram</h2>
-        <span>@miralou</span>
+        <span className={styles.tag}>@miralou</span>
         <div>
           <img
             src={instagram1}
