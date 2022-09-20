@@ -37,12 +37,13 @@
     padding: 2.5rem 5%;
     text-align: center;
 
-    span {
+    .tag {
       font-family: var(--sans-serif);
       color: var(--blue);
     }
     h2 {
       color: var(--grey);
+      margin-bottom: 1rem;
     }
     &::before {
       content: "";
@@ -117,6 +118,7 @@
     h2 {
       font-family: var(--serif);
       font-weight: 400;
+      margin-bottom: 0;
     }
     div {
       margin-top: 1rem;
