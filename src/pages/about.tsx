@@ -1,13 +1,16 @@
+import TeamCard from "../components/TeamCard";
+import ReviewModule from "../components/ReviewModule";
 import about1 from "../assets/about-1.jpg";
 import about2 from "../assets/about-2.jpg";
+import styles from "../styles/about.module.css";
 
 const About = () => {
   return (
     <main>
-      <header>
+      <header className={styles.hero}>
         <h1>About Us</h1>
       </header>
-      <section id="about">
+      <section id="about" className={styles.about}>
         <article>
           <h2>We Are Miralou!</h2>
           <p>
@@ -30,23 +33,23 @@ const About = () => {
           <img src={about2} alt="Makeup on a table" width="640" height="640" />
         </div>
       </section>
-      <div>
-        <div id="values">
+      <div id="values" className={styles.cardWrapper}>
+        <div className={styles.card}>
           <span>Worldwide shipping</span>
           <p>
             Nunc porta, elit id placerat dignissim, lectus elit dictum enim, nec
             rutrum mauris ligula tempor risus. Quisque in interdum ante.
           </p>
         </div>
-        <div>
+        <div className={styles.card}>
           <span>24/7 Support</span>
           <p>
             Nunc porta, elit id placerat dignissim, lectus elit dictum enim, nec
             rutrum mauris ligula tempor risus. Quisque in interdum ante.
           </p>
         </div>
-        <div>
-          <span>Satisfaction Guaranteed</span>
+        <div className={styles.card}>
+          <span>Constant Savings</span>
           <p>
             Nunc porta, elit id placerat dignissim, lectus elit dictum enim, nec
             rutrum mauris ligula tempor risus. Quisque in interdum ante.
@@ -55,12 +58,39 @@ const About = () => {
       </div>
       <section id="team">
         <h2>Our Team</h2>
-        {/* add team members */}
+        <div className={styles.team}>
+          <TeamCard
+            name="Jason Stewardt"
+            role="Founder"
+            email="jstewardt@example.com"
+          />
+          <TeamCard
+            name="Lisa Mount"
+            role="Co Founder"
+            email="lmount@example.com"
+          />
+          <TeamCard name="Jack Cray" role="CEO" email="jcray@example.com" />
+          <TeamCard
+            name="Max Niklsen"
+            role="Marketing"
+            email="mniklsen@example.com"
+          />
+          <TeamCard
+            name="Cliff Johnson"
+            role="Developer"
+            email="cjohnson@example.com"
+          />
+          <TeamCard
+            name="Carl Adams"
+            role="Design"
+            email="cadams@example.com"
+          />
+        </div>
       </section>
-      <section id="reviews">
-        <span>What Our Customers Say</span>
+      <section id="reviews" className={styles.reviews}>
+        <span className={styles.tag}>What Our Customers Say</span>
         <h2>Latest Reviews</h2>
-        {/* To be done later */}
+        <ReviewModule />
       </section>
     </main>
   );
