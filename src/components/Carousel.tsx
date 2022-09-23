@@ -1,22 +1,15 @@
 import { useState } from "react";
-import ReviewCard from "./ReviewCard";
-import styles from "../styles/ReviewModule.module.css";
+import styles from "../styles/Carousel.module.css";
 
-const reviews = [
-  [<ReviewCard name="1" key="1" />, <ReviewCard name="2" key="2" />],
-  [<ReviewCard name="3" key="1" />, <ReviewCard name="4" key="2" />],
-  [<ReviewCard name="5" key="1" />, <ReviewCard name="6" key="2" />],
-];
-
-const ReviewModule = () => {
+const Carousel = ({ slides }: { slides: JSX.Element[][] }) => {
   const [index, setIndex] = useState(0);
 
   const next = () => {
-    setIndex((index + 1) % reviews.length);
+    setIndex((index + 1) % slides.length);
   };
 
   const previous = () => {
-    setIndex((index - 1 + reviews.length) % reviews.length);
+    setIndex((index - 1 + slides.length) % slides.length);
   };
   return (
     <>
@@ -24,11 +17,18 @@ const ReviewModule = () => {
         <button type="button" onClick={previous}>
           {"<"}
         </button>
-        {reviews.map((e, i) => (
-          <div key={i} className={index === i ? styles.active : styles.hidden}>
-            {reviews[i].map((e) => e)}
+        <div className={styles.carousel}>
+          <div
+            className={styles.window}
+            style={{ transform: `translateX(${-index * 100}%)` }}
+          >
+            {slides.map((e, i) => (
+              <div key={i} className={styles.slide}>
+                {slides[i].map((e) => e)}
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
         <button type="button" onClick={next}>
           {">"}
         </button>
@@ -38,7 +38,7 @@ const ReviewModule = () => {
         <button type="button" onClick={previous}>
           {"<"}
         </button>
-        {reviews.map((e, i) => (
+        {slides.map((e, i) => (
           <span
             key={i}
             onClick={() => setIndex(i)}
@@ -53,4 +53,4 @@ const ReviewModule = () => {
   );
 };
 
-export default ReviewModule;
+export default Carousel;
