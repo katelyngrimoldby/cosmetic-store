@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ButtonLink from "../components/ButtonLink";
-import ReviewModule from "../components/ReviewModule";
+import Carousel from "../components/Carousel";
+import ReviewCard from "../components/ReviewCard";
 import instagram1 from "../assets/instagram-1.jpg";
 import instagram2 from "../assets/instagram-2.jpg";
 import instagram3 from "../assets/instagram-3.jpg";
@@ -48,7 +49,13 @@ const Home = () => {
       <section id="reviews" className={styles.section}>
         <span className={styles.tag}>What Our Customers Say</span>
         <h2>Latest Reviews</h2>
-        <ReviewModule />
+        <Carousel
+          slides={[
+            [<ReviewCard name="1" key="1" />, <ReviewCard name="2" key="2" />],
+            [<ReviewCard name="3" key="1" />, <ReviewCard name="4" key="2" />],
+            [<ReviewCard name="5" key="1" />, <ReviewCard name="6" key="2" />],
+          ]}
+        />
       </section>
       <section id="instagram" className={styles.instagram}>
         <h2>Follow Us On Instagram</h2>
