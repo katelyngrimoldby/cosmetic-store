@@ -2,20 +2,21 @@ import map from "../assets/sample-map.jpg";
 import emailIcon from "../assets/email-outline.svg";
 import phoneIcon from "../assets/phone-outline.svg";
 import locationIcon from "../assets/map-marker-outline.svg";
+import styles from "../styles/contact.module.css";
 
 const Contact = () => {
   return (
     <main>
-      <header>
+      <header className={styles.hero}>
         <h1>Contact Us</h1>
       </header>
-      <div>
+      <div className={styles.top}>
         <section>
           <h2>Miralou No.1</h2>
           <ul>
             <li>
               <img src={locationIcon} alt="location" width="24" height="24" />{" "}
-              2715 Ash Dr. San Jose, South Dakota 83475
+              2715 Ash Drive, South Dakota 83475
             </li>
             <li>
               <img src={phoneIcon} alt="phone" width="24" height="24" /> (808)
@@ -30,7 +31,7 @@ const Contact = () => {
           <ul>
             <li>
               <img src={locationIcon} alt="location" width="24" height="24" />{" "}
-              445 MLK Street, Soth Dakota 55631
+              445 MLK Street, South Dakota 55631
             </li>
             <li>
               <img src={phoneIcon} alt="phone" width="24" height="24" /> (808)
@@ -42,9 +43,11 @@ const Contact = () => {
             </li>
           </ul>
         </section>
-        <img src={map} alt="Map of locations" width="1040" height="612" />
+        <div className={styles.map}>
+          <img src={map} alt="Map of locations" width="1040" height="612" />
+        </div>
       </div>
-      <div>
+      <div className={styles.bottom}>
         <section>
           <h2>Get in Touch</h2>
           <p>
