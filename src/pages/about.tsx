@@ -1,5 +1,6 @@
 import TeamCard from "../components/TeamCard";
-import ReviewModule from "../components/ReviewModule";
+import Carousel from "../components/Carousel";
+import ReviewCard from "../components/ReviewCard";
 import about1 from "../assets/about-1.jpg";
 import about2 from "../assets/about-2.jpg";
 import styles from "../styles/about.module.css";
@@ -90,7 +91,13 @@ const About = () => {
       <section id="reviews" className={styles.reviews}>
         <span className={styles.tag}>What Our Customers Say</span>
         <h2>Latest Reviews</h2>
-        <ReviewModule />
+        <Carousel
+          slides={[
+            [<ReviewCard name="1" key="1" />, <ReviewCard name="2" key="2" />],
+            [<ReviewCard name="3" key="1" />, <ReviewCard name="4" key="2" />],
+            [<ReviewCard name="5" key="1" />, <ReviewCard name="6" key="2" />],
+          ]}
+        />
       </section>
     </main>
   );
