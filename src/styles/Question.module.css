@@ -13,6 +13,7 @@
       background-color: var(--light-grey);
       text-align: center;
       color: var(--grey);
+      border-radius: 7px;
     }
   }
 
@@ -65,8 +66,8 @@
   }
 
   .visible {
-    max-height: 140px;
-    padding: 3% 5%;
+    max-height: 12rem;
+    padding: 3rem 5%;
   }
 }
 
