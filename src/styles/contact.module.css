@@ -160,7 +160,7 @@
   .bottom {
     flex-direction: row-reverse;
     justify-content: flex-end;
-    gap: 5%;
+    gap: 10%;
     padding-left: 10%;
 
     section {
