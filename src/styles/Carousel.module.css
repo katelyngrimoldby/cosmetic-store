@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem !important;
     text-align: left;
 
     button {
@@ -30,6 +30,7 @@
     gap: 1rem;
     white-space: normal;
     flex-direction: column;
+    align-items: center;
   }
 
   .dots {
@@ -115,5 +116,7 @@
 
   .slide {
     flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
   }
 }
