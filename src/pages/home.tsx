@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { response } from "../apiTypes";
+import { data } from "../apiTypes";
 import ButtonLink from "../components/ButtonLink";
 import Carousel from "../components/Carousel";
 import ReviewCard from "../components/ReviewCard";
+import ProductCard from "../components/ProductCard";
 import instagram1 from "../assets/instagram-1.jpg";
 import instagram2 from "../assets/instagram-2.jpg";
 import instagram3 from "../assets/instagram-3.jpg";
@@ -17,15 +18,15 @@ async function get<T>(path: string): Promise<T> {
 }
 
 const Home = () => {
-  const [data, setData] = useState<null | response>(null);
+  const [data, setData] = useState<null | data>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await get<response>("./products.json");
+      const data = await get<data>("./products.json");
       setData(data);
     };
-    fetchData();
-    console.log(data);
+
+    fetchData().catch(console.error);
   }, []);
 
   return (
@@ -42,7 +43,95 @@ const Home = () => {
       </header>
       <section id="bestsellers" className={styles.section}>
         <h2>Our Bestsellers</h2>
-        <ButtonLink location="/shop" value="View More" />
+        <div className={styles.bestsellers}>
+          {data && (
+            <Carousel
+              slides={[
+                [
+                  <ProductCard
+                    name={data[0].name}
+                    price={data[0].price}
+                    imgSrc={data[0].api_featured_image}
+                    key="0"
+                  />,
+                  <ProductCard
+                    name={data[1].name}
+                    price={data[1].price}
+                    imgSrc={data[1].api_featured_image}
+                    key="1"
+                  />,
+                  <ProductCard
+                    name={data[2].name}
+                    price={data[2].price}
+                    imgSrc={data[2].api_featured_image}
+                    key="2"
+                  />,
+                ],
+                [
+                  <ProductCard
+                    name={data[3].name}
+                    price={data[3].price}
+                    imgSrc={data[3].api_featured_image}
+                    key="3"
+                  />,
+                  <ProductCard
+                    name={data[4].name}
+                    price={data[4].price}
+                    imgSrc={data[4].api_featured_image}
+                    key="4"
+                  />,
+                  <ProductCard
+                    name={data[5].name}
+                    price={data[5].price}
+                    imgSrc={data[5].api_featured_image}
+                    key="5"
+                  />,
+                ],
+                [
+                  <ProductCard
+                    name={data[6].name}
+                    price={data[6].price}
+                    imgSrc={data[6].api_featured_image}
+                    key="6"
+                  />,
+                  <ProductCard
+                    name={data[7].name}
+                    price={data[7].price}
+                    imgSrc={data[7].api_featured_image}
+                    key="7"
+                  />,
+                  <ProductCard
+                    name={data[8].name}
+                    price={data[8].price}
+                    imgSrc={data[8].api_featured_image}
+                    key="8"
+                  />,
+                ],
+                [
+                  <ProductCard
+                    name={data[9].name}
+                    price={data[9].price}
+                    imgSrc={data[9].api_featured_image}
+                    key="9"
+                  />,
+                  <ProductCard
+                    name={data[10].name}
+                    price={data[10].price}
+                    imgSrc={data[10].api_featured_image}
+                    key="10"
+                  />,
+                  <ProductCard
+                    name={data[11].name}
+                    price={data[11].price}
+                    imgSrc={data[11].api_featured_image}
+                    key="11"
+                  />,
+                ],
+              ]}
+            />
+          )}
+          <ButtonLink location="/shop" value="View More" />
+        </div>
       </section>
       <section id="categories" className={styles.section}>
         <h2>Categories</h2>
