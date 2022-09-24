@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { response } from "../apiTypes";
 import ButtonLink from "../components/ButtonLink";
 import Carousel from "../components/Carousel";
 import ReviewCard from "../components/ReviewCard";
@@ -8,7 +11,23 @@ import instagram3 from "../assets/instagram-3.jpg";
 import instagram4 from "../assets/instagram-4.jpg";
 import styles from "../styles/home.module.css";
 
+async function get<T>(path: string): Promise<T> {
+  const { data } = await axios.get(path);
+  return data;
+}
+
 const Home = () => {
+  const [data, setData] = useState<null | response>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await get<response>("./products.json");
+      setData(data);
+    };
+    fetchData();
+    console.log(data);
+  }, []);
+
   return (
     <main>
       <header className={styles.hero}>
