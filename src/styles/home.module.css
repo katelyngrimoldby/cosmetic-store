@@ -59,6 +59,14 @@
       transform: translateY(-1.5rem);
     }
   }
+
+  .bestsellers {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
   .about {
     padding: 2.5rem 0;
 
