@@ -18,6 +18,11 @@
     text-align: center;
   }
 
+  .brand {
+    color: var(--grey);
+    font-size: 0.9rem;
+  }
+
   .name {
     color: var(--blue);
     font-weight: 500;
