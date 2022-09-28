@@ -23,6 +23,7 @@ import Cart from "./pages/cart";
 import Wishlist from "./pages/wishlist";
 import FAQ from "./pages/faq";
 import NoMatch from "./pages/noMatch";
+import Product from "./pages/product";
 import menuOpen from "./assets/menu-open.svg";
 import menuClose from "./assets/menu-close.svg";
 import cart from "./assets/cart-outline.svg";
@@ -44,7 +45,7 @@ function Layout() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await get<data>("./products.json");
+      const data = await get<data>("../products.json");
       dispatch(load(data));
     };
 
@@ -206,7 +207,10 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="shop" element={<Shop />} />
+      <Route path="shop" element={<Outlet />}>
+        <Route index element={<Shop />} />
+        <Route path=":id" element={<Product />} />
+      </Route>
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="cart" element={<Cart />} />
