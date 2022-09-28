@@ -22,6 +22,7 @@ const Shop = () => {
           {currentData.map((e, i) => {
             return (
               <ProductCard
+                id={e.id}
                 brand={typeof e.brand != "string" ? "filler" : e.brand}
                 name={e.name}
                 price={typeof e.price != "string" ? "5.0" : e.price}
