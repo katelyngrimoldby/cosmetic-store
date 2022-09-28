@@ -28,11 +28,12 @@ const Home = () => {
       <section id="bestsellers" className={styles.section}>
         <h2>Our Bestsellers</h2>
         <div className={styles.bestsellers}>
-          {data && (
+          {data.length != 0 && (
             <Carousel
               slides={[
                 [
                   <ProductCard
+                    id={data[0].id}
                     brand={data[0].brand}
                     name={data[0].name}
                     price={data[0].price}
@@ -40,6 +41,7 @@ const Home = () => {
                     key="0"
                   />,
                   <ProductCard
+                    id={data[1].id}
                     brand={data[1].brand}
                     name={data[1].name}
                     price={data[1].price}
@@ -47,6 +49,7 @@ const Home = () => {
                     key="1"
                   />,
                   <ProductCard
+                    id={data[2].id}
                     brand={data[2].brand}
                     name={data[2].name}
                     price={data[2].price}
@@ -56,6 +59,7 @@ const Home = () => {
                 ],
                 [
                   <ProductCard
+                    id={data[3].id}
                     brand={data[3].brand}
                     name={data[3].name}
                     price={data[3].price}
@@ -63,6 +67,7 @@ const Home = () => {
                     key="3"
                   />,
                   <ProductCard
+                    id={data[4].id}
                     brand={data[4].brand}
                     name={data[4].name}
                     price={data[4].price}
@@ -70,6 +75,7 @@ const Home = () => {
                     key="4"
                   />,
                   <ProductCard
+                    id={data[5].id}
                     brand={data[5].brand}
                     name={data[5].name}
                     price={data[5].price}
@@ -79,6 +85,7 @@ const Home = () => {
                 ],
                 [
                   <ProductCard
+                    id={data[6].id}
                     brand={data[6].brand}
                     name={data[6].name}
                     price={data[6].price}
@@ -86,6 +93,7 @@ const Home = () => {
                     key="6"
                   />,
                   <ProductCard
+                    id={data[7].id}
                     brand={data[7].brand}
                     name={data[7].name}
                     price={data[7].price}
@@ -93,6 +101,7 @@ const Home = () => {
                     key="7"
                   />,
                   <ProductCard
+                    id={data[8].id}
                     brand={data[8].brand}
                     name={data[8].name}
                     price={data[8].price}
@@ -102,6 +111,7 @@ const Home = () => {
                 ],
                 [
                   <ProductCard
+                    id={data[9].id}
                     brand={data[9].brand}
                     name={data[9].name}
                     price={data[9].price}
@@ -109,6 +119,7 @@ const Home = () => {
                     key="9"
                   />,
                   <ProductCard
+                    id={data[10].id}
                     brand={data[10].brand}
                     name={data[10].name}
                     price={data[10].price}
@@ -116,6 +127,7 @@ const Home = () => {
                     key="10"
                   />,
                   <ProductCard
+                    id={data[11].id}
                     brand={data[11].brand}
                     name={data[11].name}
                     price={data[11].price}
@@ -131,7 +143,7 @@ const Home = () => {
       </section>
       <section id="categories" className={styles.section}>
         <h2>Categories</h2>
-        {data && (
+        {data.length != 0 && (
           <div className={styles.categories}>
             <div className={styles.card}>
               <img src={data[20].api_featured_image} alt="Blush" width="100" />
