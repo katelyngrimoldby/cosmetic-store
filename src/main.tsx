@@ -1,7 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+  Route,
+  Link,
+  Outlet,
+} from "react-router-dom";
 import axios from "axios";
 import { Provider } from "react-redux";
 import { useAppDispatch } from "./redux/hooks";
@@ -195,23 +202,25 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="shop" element={<Shop />} />
+      <Route path="about" element={<About />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path="cart" element={<Cart />} />
+      <Route path="wishlist" element={<Wishlist />} />
+      <Route path="faq" element={<FAQ />} />
+      <Route path="*" element={<NoMatch />} />
+    </Route>
+  )
+);
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="shop" element={<Shop />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="wishlist" element={<Wishlist />} />
-            <Route path="faq" element={<FAQ />} />
-            <Route path="*" element={<NoMatch />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );
