@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { data } from "../apiTypes";
+import { useAppSelector } from "../redux/hooks";
+import { selectData } from "../redux/slices/dataSlice";
 import ButtonLink from "../components/ButtonLink";
 import Carousel from "../components/Carousel";
 import ReviewCard from "../components/ReviewCard";
@@ -12,23 +11,8 @@ import instagram3 from "../assets/instagram-3.jpg";
 import instagram4 from "../assets/instagram-4.jpg";
 import styles from "../styles/home.module.css";
 
-async function get<T>(path: string): Promise<T> {
-  const { data } = await axios.get(path);
-  return data;
-}
-
 const Home = () => {
-  const [data, setData] = useState<null | data>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await get<data>("./products.json");
-      setData(data);
-    };
-
-    fetchData().catch(console.error);
-  }, []);
-
+  const data = useAppSelector(selectData);
   return (
     <main>
       <header className={styles.hero}>
@@ -147,7 +131,78 @@ const Home = () => {
       </section>
       <section id="categories" className={styles.section}>
         <h2>Categories</h2>
-        {/* To be inputted later */}
+        {data && (
+          <div className={styles.categories}>
+            <div className={styles.card}>
+              <img src={data[20].api_featured_image} alt="Blush" width="100" />
+              <Link to="/shop">{data[20].name}</Link>
+            </div>
+            <div className={styles.card}>
+              <img
+                src={data[15].api_featured_image}
+                alt="Bronzer"
+                width="100"
+              />
+              <Link to="/shop">Bronzer</Link>
+            </div>
+            <div className={styles.card}>
+              <img src={data[27].api_featured_image} alt="Brows" width="100" />
+              <Link to="/shop">Brows</Link>
+            </div>
+            <div className={styles.card}>
+              <img
+                src={data[7].api_featured_image}
+                alt="Eyeliner"
+                width="100"
+              />
+              <Link to="/shop">Eyeliner</Link>
+            </div>
+            <div className={styles.card}>
+              <img
+                src={data[8].api_featured_image}
+                alt="Eyeshadow"
+                width="100"
+              />
+              <Link to="/shop">Eyeshadow</Link>
+            </div>
+            <div className={styles.card}>
+              <img
+                src={data[3].api_featured_image}
+                alt="Foundation"
+                width="100"
+              />
+              <Link to="/shop">Foundation</Link>
+            </div>
+            <div className={styles.card}>
+              <img
+                src={data[0].api_featured_image}
+                alt="Lip Liner"
+                width="100"
+              />
+              <Link to="/shop">Lip Liner</Link>
+            </div>
+            <div className={styles.card}>
+              <img
+                src={data[1].api_featured_image}
+                alt="Lipstick"
+                width="100"
+              />
+              <Link to="/shop">Lipstick</Link>
+            </div>
+            <div className={styles.card}>
+              <img
+                src={data[21].api_featured_image}
+                alt="Mascara"
+                width="100"
+              />
+              <Link to="/shop">Mascara</Link>
+            </div>
+            <div className={styles.card}>
+              <img src={data[306].api_featured_image} alt="Nails" width="100" />
+              <Link to="/shop">Nails</Link>
+            </div>
+          </div>
+        )}
       </section>
       <section id="about" className={styles.about}>
         <div className={styles.header}>
