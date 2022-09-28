@@ -1,18 +1,22 @@
+import { Link } from "react-router-dom";
 import styles from "../styles/ProductCard.module.css";
 
 type CardProps = {
+  id: number;
   brand: string;
   name: string;
   price: string;
   imgSrc: string;
 };
 
-const ProductCard = ({ brand, name, price, imgSrc }: CardProps) => {
+const ProductCard = ({ id, brand, name, price, imgSrc }: CardProps) => {
   return (
     <div className={styles.card}>
       <img src={imgSrc} alt={name} width="400" />
       <span className={styles.brand}>{brand}</span>
-      <span className={styles.name}>{name}</span>
+      <Link to={`/shop/${id}`} className={styles.name}>
+        {name}
+      </Link>
       <span className={styles.price}>{`$${price}`}</span>
     </div>
   );
