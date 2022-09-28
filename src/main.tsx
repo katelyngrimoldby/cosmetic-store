@@ -1,7 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
+import axios from "axios";
+import { Provider } from "react-redux";
+import { useAppDispatch } from "./redux/hooks";
+import { load } from "./redux/slices/dataSlice";
+import { store } from "./redux/store";
+import type { data } from "./apiTypes";
 import Home from "./pages/home";
 import Shop from "./pages/shop";
 import About from "./pages/about";
@@ -20,8 +26,23 @@ import location from "./assets/map-marker-outline.svg";
 import styles from "./styles/Layout.module.css";
 import "./styles/global.css";
 
+async function get<T>(path: string): Promise<T> {
+  const { data } = await axios.get(path);
+  return data;
+}
+
 function Layout() {
   const [visible, setVisible] = useState(false);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await get<data>("./products.json");
+      dispatch(load(data));
+    };
+
+    fetchData().catch(console.error);
+  }, []);
 
   const handleNav = () => {
     setVisible(!visible);
@@ -176,19 +197,21 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="shop" element={<Shop />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="wishlist" element={<Wishlist />} />
-          <Route path="faq" element={<FAQ />} />
-          <Route path="*" element={<NoMatch />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="shop" element={<Shop />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="wishlist" element={<Wishlist />} />
+            <Route path="faq" element={<FAQ />} />
+            <Route path="*" element={<NoMatch />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
