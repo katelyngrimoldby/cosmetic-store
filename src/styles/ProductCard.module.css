@@ -13,7 +13,8 @@
     margin-bottom: 0.5rem;
   }
 
-  span {
+  span,
+  a {
     font-family: var(--sans-serif);
     text-align: center;
   }
@@ -26,6 +27,7 @@
   .name {
     color: var(--blue);
     font-weight: 500;
+    text-decoration: none;
   }
 
   .price {
