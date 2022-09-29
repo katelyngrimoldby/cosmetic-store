@@ -3,6 +3,7 @@ import { useAppSelector } from "../redux/hooks";
 import { selectData } from "../redux/slices/dataSlice";
 import Pagination from "../components/Pagination";
 import ProductCard from "../components/ProductCard";
+import styles from "../styles/shop.module.css";
 
 const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,10 +16,12 @@ const Shop = () => {
   }, [currentPage, data]);
 
   return (
-    <div>
-      <h1>shop</h1>
-      <div>
-        <div>
+    <main>
+      <header className={styles.hero}>
+        <h1>Shop</h1>
+      </header>
+      <div className={styles.body}>
+        <div className={styles.grid}>
           {currentData.map((e, i) => {
             return (
               <ProductCard
@@ -39,7 +42,7 @@ const Shop = () => {
           onPageChange={(page) => setCurrentPage(page)}
         />
       </div>
-    </div>
+    </main>
   );
 };
 
