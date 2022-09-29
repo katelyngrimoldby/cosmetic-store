@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import styles from "../styles/Pagination.module.css";
 
 interface PaginationArgs {
   totalCount: number;
@@ -98,7 +99,7 @@ const Pagination = ({
     pageSize,
   });
 
-  //if range is less than two no pagination will be rendered
+  // If range is less than two no pagination will be rendered
   if (currentPage === 0 || (paginationRange && paginationRange.length < 2)) {
     return null;
   }
@@ -116,35 +117,64 @@ const Pagination = ({
     : null;
 
   return (
-    <div>
-      <button type="button" onClick={onPrev} disabled={currentPage === 1}>
-        {"<"}
-      </button>
-      {paginationRange &&
-        paginationRange.map((pageNo, i) => {
-          if (pageNo === DOTS) {
-            return <span key={i}>&#8230;</span>;
-          }
-          if (typeof pageNo == "number") {
-            return (
-              <button
-                type="button"
-                onClick={() => onPageChange(pageNo)}
-                key={i}
-              >
-                {pageNo}
-              </button>
-            );
-          }
-        })}
-      <button
-        type="button"
-        onClick={onNext}
-        disabled={currentPage === lastPage}
-      >
-        {">"}
-      </button>
-    </div>
+    <>
+      <div className={styles.wrapper}>
+        <button
+          type="button"
+          onClick={onPrev}
+          disabled={currentPage === 1}
+          className={styles.arrow}
+        >
+          {"<"}
+        </button>
+        {paginationRange &&
+          paginationRange.map((pageNo, i) => {
+            if (pageNo === DOTS) {
+              return <span key={i}>&#8230;</span>;
+            }
+            if (typeof pageNo == "number") {
+              return (
+                <button
+                  type="button"
+                  onClick={() => onPageChange(pageNo)}
+                  key={i}
+                  className={
+                    pageNo === currentPage ? styles.activePill : styles.pill
+                  }
+                >
+                  {pageNo}
+                </button>
+              );
+            }
+          })}
+        <button
+          type="button"
+          onClick={onNext}
+          disabled={currentPage === lastPage}
+          className={styles.arrow}
+        >
+          {">"}
+        </button>
+      </div>
+      <div className={styles.mButtons}>
+        <button
+          type="button"
+          onClick={onPrev}
+          disabled={currentPage === 1}
+          className={styles.arrow}
+        >
+          {"<"}
+        </button>
+        <button
+          type="button"
+          onClick={onNext}
+          disabled={currentPage === lastPage}
+          className={styles.arrow}
+        >
+          {">"}
+        </button>
+      </div>
+    </>
   );
 };
 
