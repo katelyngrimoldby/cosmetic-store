@@ -147,7 +147,7 @@ const Home = () => {
           <div className={styles.categories}>
             <div className={styles.card}>
               <img src={data[20].api_featured_image} alt="Blush" width="100" />
-              <Link to="/shop">{data[20].name}</Link>
+              <Link to="/shop?category=blush">{data[20].name}</Link>
             </div>
             <div className={styles.card}>
               <img
@@ -155,11 +155,11 @@ const Home = () => {
                 alt="Bronzer"
                 width="100"
               />
-              <Link to="/shop">Bronzer</Link>
+              <Link to="/shop?category=bronzer">Bronzer</Link>
             </div>
             <div className={styles.card}>
               <img src={data[27].api_featured_image} alt="Brows" width="100" />
-              <Link to="/shop">Brows</Link>
+              <Link to="/shop?category=eyebrows">Brows</Link>
             </div>
             <div className={styles.card}>
               <img
@@ -167,7 +167,7 @@ const Home = () => {
                 alt="Eyeliner"
                 width="100"
               />
-              <Link to="/shop">Eyeliner</Link>
+              <Link to="/shop?category=eyeliner">Eyeliner</Link>
             </div>
             <div className={styles.card}>
               <img
@@ -175,7 +175,7 @@ const Home = () => {
                 alt="Eyeshadow"
                 width="100"
               />
-              <Link to="/shop">Eyeshadow</Link>
+              <Link to="/shop?category=eyeshadow">Eyeshadow</Link>
             </div>
             <div className={styles.card}>
               <img
@@ -183,7 +183,7 @@ const Home = () => {
                 alt="Foundation"
                 width="100"
               />
-              <Link to="/shop">Foundation</Link>
+              <Link to="/shop?category=foundation">Foundation</Link>
             </div>
             <div className={styles.card}>
               <img
@@ -191,7 +191,7 @@ const Home = () => {
                 alt="Lip Liner"
                 width="100"
               />
-              <Link to="/shop">Lip Liner</Link>
+              <Link to="/shop?category=lip_liner">Lip Liner</Link>
             </div>
             <div className={styles.card}>
               <img
@@ -199,7 +199,7 @@ const Home = () => {
                 alt="Lipstick"
                 width="100"
               />
-              <Link to="/shop">Lipstick</Link>
+              <Link to="/shop?category=lipstick">Lipstick</Link>
             </div>
             <div className={styles.card}>
               <img
@@ -207,11 +207,11 @@ const Home = () => {
                 alt="Mascara"
                 width="100"
               />
-              <Link to="/shop">Mascara</Link>
+              <Link to="/shop?category=mascara">Mascara</Link>
             </div>
             <div className={styles.card}>
               <img src={data[306].api_featured_image} alt="Nails" width="100" />
-              <Link to="/shop">Nails</Link>
+              <Link to="/shop?category=nail_polish">Nails</Link>
             </div>
           </div>
         )}
