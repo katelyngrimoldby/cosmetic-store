@@ -8,7 +8,7 @@ import styles from "../styles/shop.module.css";
 
 const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageLength, setPageLength] = useState(10);
+  const [pageLength, setPageLength] = useState(20);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const data = useAppSelector(selectData);
@@ -77,7 +77,7 @@ const Shop = () => {
     const firstPageIndex = (currentPage - 1) * pageLength;
     const lastPageIndex = firstPageIndex + pageLength;
     return dataCopy.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, data, searchParams]);
+  }, [currentPage, data, searchParams, pageLength]);
 
   const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.id != "none") {
@@ -94,6 +94,10 @@ const Shop = () => {
   const handleSort = (event: React.ChangeEvent<HTMLInputElement>) => {
     searchParams.set("sort", event.target.id);
     setSearchParams(searchParams);
+  };
+
+  const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setPageLength(parseInt(event.target.value));
   };
 
   return (
@@ -298,6 +302,16 @@ const Shop = () => {
           pageSize={pageLength}
           onPageChange={(page) => setCurrentPage(page)}
         />
+
+        <span>
+          Display{" "}
+          <select name="items" id="items" onChange={handleSelect}>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>{" "}
+          items per page
+        </span>
       </div>
     </main>
   );
