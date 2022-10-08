@@ -1,0 +1,237 @@
+@import "variables.css";
+@media screen and (min-width: 0px) {
+  .hero {
+    background-image: url("../assets/product-hero.jpg");
+    background-position: center;
+    background-size: cover;
+
+    h1 {
+      height: 100%;
+      padding: 5%;
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+  }
+
+  .content {
+    padding: 5%;
+  }
+
+  .coreWrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 300px;
+    }
+  }
+
+  .coreContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    font-family: var(--sans-serif);
+
+    .brand {
+      color: var(--grey);
+    }
+
+    h2 {
+      color: var(--grey);
+      font-weight: 500;
+      text-align: left;
+    }
+
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    input {
+      text-align: center;
+      font-family: var(--sans-serif);
+      font-weight: 500;
+      border: 1px solid var(--blue);
+      width: 2rem;
+      padding: 0.25rem 0.5rem;
+    }
+
+    .colors {
+      position: relative;
+      padding: 0.5rem 0;
+      height: 210px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+      gap: 0.5rem;
+      border: 1px solid var(--blue);
+    }
+
+    .color {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      font-size: 0.7rem;
+      align-items: center;
+      button {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: none;
+        margin-bottom: 4px;
+      }
+    }
+
+    .price {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    .buttonWrapper {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    button {
+      font-size: 0.9rem;
+      padding: 6px 12px;
+      font-variant-caps: all-small-caps;
+      font-weight: 600;
+      border: 2px solid var(--blue);
+      background: none;
+      color: var(--grey);
+      text-align: center;
+      border-radius: 3px;
+    }
+
+    .favourites {
+      padding: 3px;
+    }
+  }
+
+  .collapsible {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    div:last-of-type {
+      transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+      text-align: left;
+      color: black;
+    }
+  }
+  .banner {
+    background-color: var(--light-grey);
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--grey);
+    font-family: var(--sans-serif);
+    text-align: left;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    span {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    button {
+      background: none;
+      border: none;
+      font-family: var(--sans-serif);
+    }
+  }
+  .invisible {
+    max-height: 0px;
+    overflow: hidden;
+    padding: 0 5%;
+  }
+
+  .visible {
+    max-height: 1000px;
+    padding: 2rem 5%;
+    overflow: hidden;
+  }
+
+  .reviewWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-left: 4px solid var(--blue);
+    margin-left: -5%;
+    padding-left: 5%;
+
+    img {
+      width: 75px;
+    }
+  }
+
+  .reviewText {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    span {
+      font-family: var(--sans-serif);
+      color: var(--grey);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+  }
+
+  .other {
+    margin-top: 1rem;
+    h2 {
+      color: var(--grey);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .coreWrapper {
+    flex-direction: row;
+  }
+
+  .coreContent {
+    .colors {
+      height: 330px;
+    }
+
+    input {
+      width: 3rem;
+    }
+  }
+
+  .reviewWrapper {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .coreContent {
+    .colors {
+      height: fit-content;
+    }
+
+    input {
+      width: 3rem;
+    }
+  }
+}
