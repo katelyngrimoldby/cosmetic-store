@@ -23,6 +23,8 @@
     flex-direction: column-reverse;
     gap: 1rem;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     margin-bottom: 2rem;
 
     img {
@@ -66,13 +68,12 @@
     }
 
     .colors {
-      position: relative;
-      padding: 0.5rem 0;
+      padding: 0.5rem;
       height: 210px;
       overflow-y: auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
-      gap: 0.5rem;
+      grid-template-columns: repeat(auto-fit, 75px);
+      gap: 1.25rem;
       border: 1px solid var(--blue);
     }
 
