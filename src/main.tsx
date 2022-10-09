@@ -8,6 +8,7 @@ import {
   Route,
   Link,
   Outlet,
+  useLocation,
 } from "react-router-dom";
 import axios from "axios";
 import { Provider } from "react-redux";
@@ -39,6 +40,15 @@ async function get<T>(path: string): Promise<T> {
   return data;
 }
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
 function Layout() {
   const [visible, setVisible] = useState(false);
   const dispatch = useAppDispatch();
@@ -57,6 +67,7 @@ function Layout() {
   };
   return (
     <>
+      <ScrollToTop />
       <header className={styles.header}>
         <div className={styles.headerWrapper}>
           <button type="button" className={styles.menuBtn} onClick={handleNav}>
