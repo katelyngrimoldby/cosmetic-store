@@ -24,7 +24,7 @@ import Cart from "./pages/cart";
 import Wishlist from "./pages/wishlist";
 import FAQ from "./pages/faq";
 import NoMatch from "./pages/noMatch";
-import Product from "./pages/product";
+import Product from "./components/product";
 import menuOpen from "./assets/menu-open.svg";
 import menuClose from "./assets/menu-close.svg";
 import cart from "./assets/cart-outline.svg";
