@@ -7,6 +7,7 @@ interface cartItem {
     brand: string;
     name: string;
     img: string;
+    price: number;
     color: null | {
       hex: string;
       name: string;
