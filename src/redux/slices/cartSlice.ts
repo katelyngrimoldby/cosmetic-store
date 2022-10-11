@@ -27,33 +27,37 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<cartItem>) => {
-      const currentState = [...state.value];
-      const item = currentState.find(
-        (e) => e.product === action.payload.product
-      );
+    addToCart: (state, action: PayloadAction<cartItem>) => {
+      const item = state.value.find((item) => {
+        if (item.product.color && action.payload.product.color) {
+          return item.product.color.hex === action.payload.product.color.hex;
+        }
+      });
+
       if (item) {
         item.quantity += action.payload.quantity;
-        const newState = [item].concat(
-          ...currentState.filter((e) => e.product !== item.product)
-        );
-        state.value = newState;
       } else {
         state.value = [action.payload, ...state.value];
       }
     },
-    remove: (state, action: PayloadAction<cartItem>) => {
-      state.value = [...state.value].filter((e) => e !== action.payload);
+    removeFromCart: (state, action: PayloadAction<cartItem>) => {
+      state.value = [...state.value].filter((item) => item !== action.payload);
     },
-    edit: (state, action: PayloadAction<{ id: number; value: number }>) => {
-      const copy = [...state.value];
-      copy[action.payload.id].quantity += action.payload.value;
-      state.value = copy;
+    edit: (state, action: PayloadAction<cartItem>) => {
+      const item = state.value.find((item) => {
+        if (item.product.color && action.payload.product.color) {
+          return item.product.color.hex === action.payload.product.color.hex;
+        }
+      });
+
+      if (item) {
+        item.quantity = action.payload.quantity;
+      }
     },
   },
 });
 
-export const { add, remove, edit } = cartSlice.actions;
+export const { addToCart, removeFromCart, edit } = cartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart.value;
 
