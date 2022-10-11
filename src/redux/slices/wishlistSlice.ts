@@ -13,7 +13,7 @@ interface wishlistItem {
 }
 
 interface wishlistState {
-  value: [] | wishlistItem[];
+  value: wishlistItem[];
 }
 
 const initialState: wishlistState = {
@@ -24,16 +24,20 @@ export const wishlistSlice = createSlice({
   name: "wishlist",
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<wishlistItem>) => {
+    addToWishlist: (state, action: PayloadAction<wishlistItem>) => {
       state.value = [action.payload, ...state.value];
     },
-    remove: (state, action: PayloadAction<wishlistItem>) => {
-      state.value = [...state.value.filter((e) => e !== action.payload)];
+    removeFromWishlist: (state, action: PayloadAction<wishlistItem>) => {
+      state.value = state.value.filter((item) => {
+        if (item.color && action.payload.color) {
+          return item.color.hex !== action.payload.color.hex;
+        }
+      });
     },
   },
 });
 
-export const { add, remove } = wishlistSlice.actions;
+export const { addToWishlist, removeFromWishlist } = wishlistSlice.actions;
 
 export const selectWishlist = (state: RootState) => state.wishlist.value;
 
