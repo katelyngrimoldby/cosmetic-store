@@ -1,6 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useAppSelector } from "../redux/hooks";
+import { useState, useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { selectData } from "../redux/slices/dataSlice";
+import { addToCart } from "../redux/slices/cartSlice";
+import {
+  selectWishlist,
+  addToWishlist,
+  removeFromWishlist,
+} from "../redux/slices/wishlistSlice";
 import { obj } from "../apiTypes";
 import Carousel from "../components/Carousel";
 import ProductCard from "../components/ProductCard";
@@ -15,6 +21,7 @@ interface cartItem {
     brand: string;
     name: string;
     img: string;
+    price: number;
     color: null | {
       hex: string;
       name: string;
@@ -25,17 +32,21 @@ interface cartItem {
 
 const ProductPage = ({ item }: { item: obj }) => {
   const [open, setOpen] = useState([false, false]);
+  const [inWishlist, setInWishlist] = useState(false);
   const [cartItem, setCartItem] = useState<cartItem>({
     product: {
       id: item.id,
       brand: item.brand,
       name: item.name,
       img: item.api_featured_image,
+      price: parseInt(item.price),
       color: null,
     },
     quantity: 1,
   });
   const data = useAppSelector(selectData);
+  const wishlist = useAppSelector(selectWishlist);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     setCartItem({
@@ -44,10 +55,12 @@ const ProductPage = ({ item }: { item: obj }) => {
         brand: item.brand,
         name: item.name,
         img: item.api_featured_image,
+        price: parseInt(item.price),
         color: null,
       },
       quantity: 1,
     });
+    setInWishlist(false);
   }, [item]);
 
   const handleCollapse = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -59,6 +72,20 @@ const ProductPage = ({ item }: { item: obj }) => {
 
   const handleQuantity = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCartItem({ ...cartItem, quantity: parseInt(event.target.value) });
+  };
+
+  const handleCart = () => {
+    dispatch(addToCart(cartItem));
+  };
+
+  const handleWishlist = () => {
+    if (inWishlist) {
+      dispatch(removeFromWishlist(cartItem.product));
+      setInWishlist(false);
+    } else {
+      dispatch(addToWishlist(cartItem.product));
+      setInWishlist(true);
+    }
   };
 
   return (
@@ -102,6 +129,12 @@ const ProductPage = ({ item }: { item: obj }) => {
                             color: { hex: e.hex_value, name: e.colour_name },
                           },
                         });
+                        const color = e.hex_value;
+                        setInWishlist(
+                          wishlist.find((e) => e.color && e.color.hex === color)
+                            ? true
+                            : false
+                        );
                       }}
                     />
                     <span>{e.colour_name}</span>
@@ -111,10 +144,19 @@ const ProductPage = ({ item }: { item: obj }) => {
             </div>
             <span className={styles.price}>{`$${item.price}`}</span>
             <div className={styles.buttonWrapper}>
-              <button>+ Add to the Cart</button>
-              <button className={styles.favourites}>
+              <button
+                onClick={handleCart}
+                disabled={cartItem.product.color ? false : true}
+              >
+                + Add to the Cart
+              </button>
+              <button
+                className={styles.favourites}
+                onClick={handleWishlist}
+                disabled={cartItem.product.color ? false : true}
+              >
                 <img
-                  src={starOutline}
+                  src={inWishlist ? star : starOutline}
                   alt="Add to favourites"
                   width="24"
                   height="24"
