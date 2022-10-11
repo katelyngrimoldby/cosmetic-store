@@ -42,17 +42,24 @@ export const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action: PayloadAction<cartItem>) => {
-      state.value = [...state.value].filter((item) => item !== action.payload);
+      state.value = state.value.filter((item) => {
+        if (item.product.color && action.payload.product.color) {
+          return item.product.color.hex !== action.payload.product.color.hex;
+        }
+      });
     },
-    edit: (state, action: PayloadAction<cartItem>) => {
-      const item = state.value.find((item) => {
+    edit: (
+      state,
+      action: PayloadAction<{ product: cartItem["product"]; quantity: number }>
+    ) => {
+      const index = state.value.findIndex((item) => {
         if (item.product.color && action.payload.product.color) {
           return item.product.color.hex === action.payload.product.color.hex;
         }
       });
 
-      if (item) {
-        item.quantity = action.payload.quantity;
+      if (typeof index == "number") {
+        state.value[index].quantity = action.payload.quantity;
       }
     },
   },
