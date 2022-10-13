@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { selectCart, edit, removeFromCart } from "../redux/slices/cartSlice";
 import ButtonLink from "../components/ButtonLink";
+import styles from "../styles/cart.module.css";
 
 const Cart = () => {
   const cart = useAppSelector(selectCart);
@@ -20,7 +21,7 @@ const Cart = () => {
 
   return (
     <main>
-      <header>
+      <header className={styles.hero}>
         <h1>Cart</h1>
       </header>
       {cart.length > 0 ? (
@@ -75,12 +76,15 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <section>
+        <section className={styles.empty}>
           <h2>Your Cart is Empty</h2>
           <p>
-            Donec laoreet suscipit urna. Aliquam sollicitudin bibendum odio, id
-            mollis lectus. Donec a ante elit. Aliquam eu quam vehicula, posuere
-            neque non, blandit augue. Vestibulum in auctor mi.
+            Duis ac posuere sapien, facilisis lacinia dui. Maecenas tristique
+            arcu non elit commodo maximus. Donec a imperdiet massa, posuere
+            condimentum erat. Donec vulputate turpis neque, at molestie nulla
+            mollis id. Ut tempor lacus id massa dictum condimentum. Aenean porta
+            viverra accumsan. Sed lobortis aliquam iaculis. Nunc et sem eget
+            nisi facilisis viverra.
           </p>
           <ButtonLink location="/shop" value="Shop" />
         </section>
