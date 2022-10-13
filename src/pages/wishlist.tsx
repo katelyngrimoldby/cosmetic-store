@@ -6,49 +6,58 @@ import {
 } from "../redux/slices/wishlistSlice";
 import { addToCart } from "../redux/slices/cartSlice";
 import ButtonLink from "../components/ButtonLink";
+import styles from "../styles/wishlist.module.css";
 
 const Wishlist = () => {
   const wishlist = useAppSelector(selectWishlist);
   const dispatch = useAppDispatch();
   return (
     <main>
-      <header>
+      <header className={styles.hero}>
         <h1>Wishlist</h1>
       </header>
       {wishlist.length > 0 ? (
-        <div>
+        <div className={styles.wrapper}>
           {wishlist.map((e, i) => {
             if (e.color) {
               return (
-                <div key={i}>
+                <div key={i} className={styles.item}>
                   <img src={e.img} alt={e.name} width="200" />
-                  <Link to={`/shop/${e.id}`}>{e.name}</Link>
-                  <span>{`$${e.price}`}</span>
-                  <div>
-                    <span style={{ backgroundColor: `${e.color.hex}` }} />
-                    <span>{e.color.name}</span>
+                  <Link to={`/shop/${e.id}`} className={styles.name}>
+                    {e.name}
+                  </Link>
+                  <span className={styles.price}>{`$${e.price}`}</span>
+                  <div className={styles.color}>
+                    <span
+                      style={{ backgroundColor: `${e.color.hex}` }}
+                      className={styles.swatch}
+                    />
+                    <span className={styles.colorName}>{e.color.name}</span>
                   </div>
-                  <button
-                    onClick={() => {
-                      dispatch(addToCart({ product: e, quantity: 1 }));
-                    }}
-                  >
-                    Add To Cart
-                  </button>
-                  <button
-                    onClick={() => {
-                      dispatch(removeFromWishlist(e));
-                    }}
-                  >
-                    Remove From Wishlist
-                  </button>
+                  <div className={styles.buttons}>
+                    <button
+                      onClick={() => {
+                        dispatch(addToCart({ product: e, quantity: 1 }));
+                      }}
+                    >
+                      Add To Cart
+                    </button>
+                    <button
+                      onClick={() => {
+                        dispatch(removeFromWishlist(e));
+                      }}
+                    >
+                      Remove From Wishlist
+                    </button>
+                  </div>
                 </div>
               );
             }
           })}
+          <ButtonLink location="/shop" value="Shop" />
         </div>
       ) : (
-        <section>
+        <section className={styles.empty}>
           <h2>Your Wishlist is Empty</h2>
           <p>
             Donec laoreet suscipit urna. Aliquam sollicitudin bibendum odio, id
