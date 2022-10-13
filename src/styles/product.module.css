@@ -77,12 +77,14 @@
       border: 1px solid var(--blue);
     }
 
-    .color {
+    .color,
+    .colorActive {
       display: flex;
       flex-direction: column;
       text-align: center;
       font-size: 0.7rem;
       align-items: center;
+      padding: 4px 0;
       button {
         width: 30px;
         height: 30px;
@@ -90,6 +92,11 @@
         border: none;
         margin-bottom: 4px;
       }
+    }
+
+    .colorActive {
+      border: 2px solid black;
+      //border-radius: 10px;
     }
 
     .price {
