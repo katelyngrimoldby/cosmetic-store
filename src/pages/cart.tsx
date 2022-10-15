@@ -14,7 +14,7 @@ const Cart = () => {
   useMemo(() => {
     let temp = 0;
     cart.forEach((item) => {
-      temp += item.product.price * item.quantity;
+      isNaN(item.quantity) ? temp += item.product.price : temp += item.product.price * item.quantity;
     });
     setTotal(temp);
   }, [cart]);
@@ -25,49 +25,59 @@ const Cart = () => {
         <h1>Cart</h1>
       </header>
       {cart.length > 0 ? (
-        <div>
-          {cart.map((e, i) => {
-            if (e.product.color) {
-              return (
-                <div key={i}>
-                  <img src={e.product.img} alt={e.product.name} width="300" />
-                  <Link to={`/shop/${e.product.id}`}>{e.product.name}</Link>
-                  <div>
-                    <span
-                      style={{ backgroundColor: `${e.product.color.hex}` }}
-                    />
-                    <span>{e.product.color.name}</span>
+        <div className={styles.wrapper}>
+          <div className={styles.items}>
+            {cart.map((e, i) => {
+              if (e.product.color) {
+                return (
+                  <div key={i} className={styles.item}>
+                    <img src={e.product.img} alt={e.product.name}  />
+                    <div className={styles.content}>
+                      <div className={styles.core}>
+                        <Link to={`/shop/${e.product.id}`} className={styles.name}>{e.product.name}</Link>
+                        <input
+                          type="number"
+                          name="quantity"
+                          id="quantity"
+                          min="1"
+                          defaultValue={e.quantity}
+                          onChange={(event) => {
+                            dispatch(
+                              edit({
+                                product: e.product,
+                                quantity: parseInt(event.target.value),
+                              })
+                            );
+                          }}
+                          className={styles.quantity}
+                        />
+                      </div>
+                      <div className={styles.details}>
+                        <span className={styles.price}>{isNaN(e.quantity) ? `$${e.product.price}` : `$${e.product.price * e.quantity}`}</span>
+                        <div className={styles.color}>
+                          <span
+                            style={{ backgroundColor: `${e.product.color.hex}` }}
+                            className={styles.swatch}
+                          />
+                          <span className={styles.colorName}>{e.product.color.name}</span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            dispatch(removeFromCart(e));
+                          }}
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <input
-                    type="number"
-                    name="quantity"
-                    id="quantity"
-                    min="1"
-                    defaultValue={e.quantity}
-                    onChange={(event) => {
-                      dispatch(
-                        edit({
-                          product: e.product,
-                          quantity: parseInt(event.target.value),
-                        })
-                      );
-                    }}
-                  />
-                  <span>{`$${e.product.price * e.quantity}`}</span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      dispatch(removeFromCart(e));
-                    }}
-                  >
-                    Remove
-                  </button>
-                </div>
-              );
-            }
-          })}
-          <div>
-            <div>
+                );
+              }
+            })}
+          </div>
+          <div className={styles.checkout}>
+            <div className={styles.subtotal}>
               <span>Subtotal</span>
               <span>{`$${total}`}</span>
             </div>
