@@ -11,6 +11,7 @@ import styles from "../styles/wishlist.module.css";
 const Wishlist = () => {
   const wishlist = useAppSelector(selectWishlist);
   const dispatch = useAppDispatch();
+
   return (
     <main>
       <header className={styles.hero}>
@@ -23,33 +24,41 @@ const Wishlist = () => {
               return (
                 <div key={i} className={styles.item}>
                   <img src={e.img} alt={e.name} width="200" />
-                  <Link to={`/shop/${e.id}`} className={styles.name}>
-                    {e.name}
-                  </Link>
-                  <span className={styles.price}>{`$${e.price}`}</span>
-                  <div className={styles.color}>
-                    <span
-                      style={{ backgroundColor: `${e.color.hex}` }}
-                      className={styles.swatch}
-                    />
-                    <span className={styles.colorName}>{e.color.name}</span>
+                  <div className={styles.content}>
+                    
+                    <Link to={`/shop/${e.id}`} className={styles.name}>
+                      {e.name}
+                    </Link>
+                    
+                    <div className={styles.details}>
+                      <span className={styles.price}>{`$${e.price}`}</span>
+                      <div className={styles.color}>
+                        <span
+                          style={{ backgroundColor: `${e.color.hex}` }}
+                          className={styles.swatch}
+                        />
+                        <span className={styles.colorName}>{e.color.name}</span>
+                      </div>
+                    </div>
+                    <div className={styles.buttons}>
+                      <button
+                        onClick={() => {
+                          dispatch(addToCart({ product: e, quantity: 1 }));
+                        }}
+                      >
+                        Add To Cart
+                      </button>
+                      <button
+                        onClick={() => {
+                          dispatch(removeFromWishlist(e));
+                        }}
+                      >
+                        Remove From Wishlist
+                      </button>
                   </div>
-                  <div className={styles.buttons}>
-                    <button
-                      onClick={() => {
-                        dispatch(addToCart({ product: e, quantity: 1 }));
-                      }}
-                    >
-                      Add To Cart
-                    </button>
-                    <button
-                      onClick={() => {
-                        dispatch(removeFromWishlist(e));
-                      }}
-                    >
-                      Remove From Wishlist
-                    </button>
                   </div>
+                  
+                    
                 </div>
               );
             }
