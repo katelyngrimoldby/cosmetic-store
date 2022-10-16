@@ -85,6 +85,11 @@
         img {
           display: inline;
           vertical-align: middle;
+          cursor: pointer;
+
+          &:hover {
+            border-bottom: 2px solid var(--blue);
+          }
         }
       }
     }
