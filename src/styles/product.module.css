@@ -96,7 +96,7 @@
 
     .colorActive {
       border: 2px solid black;
-      //border-radius: 10px;
+      
     }
 
     .price {
@@ -163,6 +163,9 @@
       background: none;
       border: none;
       font-family: var(--sans-serif);
+      color: var(--grey);
+      font-size: 1rem;
+      font-weight: 600;
     }
   }
   .invisible {
