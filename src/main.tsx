@@ -214,23 +214,24 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
-      <Route path="shop" element={<Outlet />}>
-        <Route index element={<Shop />} />
-        <Route path=":id" element={<Product />} />
-      </Route>
-      <Route path="about" element={<About />} />
-      <Route path="contact" element={<Contact />} />
-      <Route path="cart" element={<Cart />} />
-      <Route path="wishlist" element={<Wishlist />} />
-      <Route path="faq" element={<FAQ />} />
-      <Route path="*" element={<NoMatch />} />
+
+const router = createBrowserRouter(createRoutesFromElements(
+  <Route path="/" element={<Layout />}>
+    <Route index element={<Home />} />
+    <Route path="shop" element={<Outlet />}>
+      <Route index element={<Shop />} />
+      <Route path=":id" element={<Product />} />
     </Route>
-  )
-);
+    <Route path="about" element={<About />} />
+    <Route path="contact" element={<Contact />} />
+    <Route path="cart" element={<Cart />} />
+    <Route path="wishlist" element={<Wishlist />} />
+    <Route path="faq" element={<FAQ />} />
+    <Route path="*" element={<NoMatch />} />
+  </Route>
+), {
+  basename: "/cosmetic-store"
+});
 
 root.render(
   <React.StrictMode>
