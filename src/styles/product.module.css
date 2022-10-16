@@ -67,37 +67,7 @@
       padding: 0.25rem 0.5rem;
     }
 
-    .colors {
-      padding: 0.5rem;
-      height: 210px;
-      overflow-y: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, 75px);
-      gap: 1.25rem;
-      border: 1px solid var(--blue);
-    }
-
-    .color,
-    .colorActive {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      font-size: 0.7rem;
-      align-items: center;
-      padding: 4px 0;
-      button {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        border: none;
-        margin-bottom: 4px;
-      }
-    }
-
-    .colorActive {
-      border: 2px solid black;
-      
-    }
+    
 
     .price {
       font-size: 1.125rem;
@@ -109,9 +79,8 @@
       display: flex;
       gap: 1rem;
       align-items: center;
-    }
 
-    button {
+      button {
       font-size: 0.9rem;
       padding: 6px 12px;
       font-variant-caps: all-small-caps;
@@ -122,11 +91,86 @@
       text-align: center;
       border-radius: 3px;
     }
+    }
+
+    
 
     .favourites {
       padding: 3px;
     }
   }
+
+  .colors {
+      padding: 0.5rem 0;
+      max-height: 210px;
+      overflow: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 75px);
+      gap: 1.25rem;
+
+      background:
+    /* Shadow Cover TOP */
+    linear-gradient(
+      white 30%,
+      rgba(255, 255, 255, 0)
+    ) center top,
+    
+    /* Shadow Cover BOTTOM */
+    linear-gradient(
+      rgba(255, 255, 255, 0), 
+      white 70%
+    ) center bottom,
+    
+    /* Shadow TOP */
+    radial-gradient(
+      farthest-side at 50% 0,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0)
+    ) center top,
+    
+    /* Shadow BOTTOM */
+    radial-gradient(
+      farthest-side at 50% 100%,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0)
+    ) center bottom;
+  
+  background-repeat: no-repeat;
+  background-size: 100% 40px, 100% 40px, 100% 20px, 100% 20px;
+  background-attachment: local, local, scroll, scroll;
+    }
+
+    .color,
+    .colorActive {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      font-size: 0.7rem;
+      align-items: center;
+      padding: 4px 0;
+      border: none;
+      background: none;
+
+      span {
+        font-family: var(--sans-serif);
+        font-size: 0.8rem;
+        color: black;
+      }
+      
+    }
+
+    .colorActive {
+      border: 2px solid black;
+      
+    }
+
+    .swatch {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: none;
+        margin-bottom: 4px;
+      }
 
   .collapsible {
     display: flex;
@@ -221,10 +265,6 @@
   }
 
   .coreContent {
-    .colors {
-      height: 330px;
-    }
-
     input {
       width: 3rem;
     }
@@ -238,9 +278,6 @@
 
 @media screen and (min-width: 1025px) {
   .coreContent {
-    .colors {
-      height: fit-content;
-    }
 
     input {
       width: 3rem;
