@@ -33,6 +33,7 @@ interface cartItem {
 const ProductPage = ({ item }: { item: obj }) => {
   const [open, setOpen] = useState([false, false]);
   const [inWishlist, setInWishlist] = useState(false);
+  const [message, setMessage] = useState("");
   const [cartItem, setCartItem] = useState<cartItem>({
     product: {
       id: item.id,
@@ -76,15 +77,18 @@ const ProductPage = ({ item }: { item: obj }) => {
 
   const handleCart = () => {
     dispatch(addToCart(cartItem));
+    setMessage("Added to cart!");
   };
 
   const handleWishlist = () => {
     if (inWishlist) {
       dispatch(removeFromWishlist(cartItem.product));
       setInWishlist(false);
+      setMessage("Removed from wishlist.")
     } else {
       dispatch(addToWishlist(cartItem.product));
       setInWishlist(true);
+      setMessage("Added to wishlist!")
     }
   };
 
@@ -109,7 +113,22 @@ const ProductPage = ({ item }: { item: obj }) => {
             <div className={styles.colors}>
               {item.product_colors.map((e, i) => {
                 return (
-                  <div
+                  <button onClick={() => {
+                    setCartItem({
+                      ...cartItem,
+                      product: {
+                        ...cartItem.product,
+                        color: { hex: e.hex_value, name: e.colour_name },
+                      },
+                    });
+                    const color = e.hex_value;
+                    setInWishlist(
+                      wishlist.find((e) => e.color && e.color.hex === color)
+                        ? true
+                        : false
+                    );
+                    setMessage("");
+                  }}
                     key={i}
                     className={
                       cartItem.product.color &&
@@ -118,27 +137,13 @@ const ProductPage = ({ item }: { item: obj }) => {
                         : styles.color
                     }
                   >
-                    <button
-                      type="button"
+                    <span
+                      className={styles.swatch}
                       style={{ backgroundColor: `${e.hex_value}` }}
-                      onClick={() => {
-                        setCartItem({
-                          ...cartItem,
-                          product: {
-                            ...cartItem.product,
-                            color: { hex: e.hex_value, name: e.colour_name },
-                          },
-                        });
-                        const color = e.hex_value;
-                        setInWishlist(
-                          wishlist.find((e) => e.color && e.color.hex === color)
-                            ? true
-                            : false
-                        );
-                      }}
+                      
                     />
                     <span>{e.colour_name}</span>
-                  </div>
+                  </button>
                 );
               })}
             </div>
@@ -163,9 +168,7 @@ const ProductPage = ({ item }: { item: obj }) => {
                 />
               </button>
             </div>
-            {!cartItem.product.color && (
-              <span>Please select a colour first</span>
-            )}
+              <span>{cartItem.product.color ? message : 'Please select a colour first'}</span>
           </div>
         </div>
         <div className={styles.collapsible}>
