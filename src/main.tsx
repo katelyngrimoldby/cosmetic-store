@@ -55,7 +55,7 @@ function Layout() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await get<data>("../products.json");
+      const data = await get<data>("/products.json");
       dispatch(load(data));
     };
 
