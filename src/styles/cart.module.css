@@ -109,6 +109,10 @@
     font-weight: 500;
     font-size: 1.125rem;
     text-decoration: none;
+
+    &:hover {
+      color: black;
+    }
   }
 
   .details {
@@ -127,7 +131,7 @@
 
       &:hover {
         color: var(--blue);
-        font-weight: 600;
+        
       }
     }
   }
@@ -176,7 +180,7 @@
 
       &:hover {
         color: var(--blue);
-        font-weight: 600;
+        
       }
     }
   }
