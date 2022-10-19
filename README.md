@@ -9,7 +9,7 @@ This is a fictional cosmetic store's ecommerce site. Design from [Miralou Eight]
 `cd cosmetic-store`
 
 **Step 3:** Start the develpoment server
-`npm run dev`
+`npm run dev`  
 Then, open the localhost port outputted in the console
 
 ---
