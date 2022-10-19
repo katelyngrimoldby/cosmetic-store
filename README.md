@@ -2,13 +2,13 @@
 This is a fictional cosmetic store's ecommerce site. Design from [Miralou Eight](https://www.figma.com/community/file/1148147308548932653) by ThemeRage. JSON data taken from [Makeup API](https://makeup-api.herokuapp.com/)'s main JSON endpoint.
 
 ## Run Locally
-**Step 1:** Clone the repository
+**Step 1:** Clone the repository  
 `git clone https://github.com/katelyngrimoldby/cosmetic-store.git`
 
-**Step 2:** Navigate to root directory
+**Step 2:** Navigate to root directory  
 `cd cosmetic-store`
 
-**Step 3:** Start the develpoment server
+**Step 3:** Start the develpoment server  
 `npm run dev`  
 Then, open the localhost port outputted in the console
 
