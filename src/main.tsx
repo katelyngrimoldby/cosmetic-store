@@ -197,7 +197,7 @@ function Layout() {
           <span>
             DESIGN BY{" "}
             <a
-              href="https://katelyngrimoldby.com"
+              href="https://www.figma.com/community/file/1148147308548932653"
               target="_blank"
               rel="noreferrer"
             >
