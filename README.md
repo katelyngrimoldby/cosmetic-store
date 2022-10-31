@@ -1,5 +1,5 @@
 # Miralou Cosmetic Store
-This is a fictional cosmetic store's ecommerce site. Design from [Miralou Eight](https://www.figma.com/community/file/1148147308548932653) by ThemeRage. JSON data taken from [Makeup API](https://makeup-api.herokuapp.com/)'s main JSON endpoint.
+This is a fictional cosmetic store's ecommerce site. Design from [Miralou Eight](https://www.figma.com/community/file/1148147308548932653) by ThemeRage. JSON data taken from [Makeup API](https://makeup-api.herokuapp.com/).
 
 ## Run Locally
 **Step 1:** Clone the repository  
