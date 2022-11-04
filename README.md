@@ -6,9 +6,12 @@ This is a fictional cosmetic store's ecommerce site. Design from [Miralou Eight]
 `git clone https://github.com/katelyngrimoldby/cosmetic-store.git`
 
 **Step 2:** Navigate to root directory  
-`cd cosmetic-store`
+`cd cosmetic-store`  
 
-**Step 3:** Start the develpoment server  
+**Step 3:** Install dependencies  
+`npm install`  
+
+**Step 4:** Start the develpoment server  
 `npm run dev`  
 Then, open the localhost port outputted in the console
 
