@@ -35,7 +35,7 @@ Additionally, some elements from the larger section I did implement were omitted
 
 While colour selection was added, some products (ie. eyeshadow palettes) list colours found within the product, as opposed to variations. This is due to the data representtion of such, and since writing the JSON data was not a priority, the implementation is, while incorrect, consistent with other products. 
 
-The site is not optimized for SEO, as it was not a priority for this project and client-side rendering isn't SEO-friendly to begin with. 
+The site is not optimized for SEO, as it was not a priority for this project and client-side rendering isn't SEO-friendly to begin with. See [The Travel Enablers source code](https://github.com/katelyngrimoldby/the-travel-enablers) for my take on SEO in a dynamic website.
 
 Finally, due to the hosting through GitHub Pages, the SPA behaviour is flawed. Accessing any page aside from home via URL (not routing within the website) will result in a 404. Viewing the site through localhost does nohttps://github.com/rafgraph/spa-github-pagest reflect these issues. Unfortunately this also means the custom 404 implementation is unable to be seen through GitHub Pages.
 
