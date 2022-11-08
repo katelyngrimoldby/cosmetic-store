@@ -37,7 +37,7 @@ While colour selection was added, some products (ie. eyeshadow palettes) list co
 
 The site is not optimized for SEO, as it was not a priority for this project and client-side rendering isn't SEO-friendly to begin with. See [The Travel Enablers source code](https://github.com/katelyngrimoldby/the-travel-enablers) for my take on SEO in a dynamic website.
 
-Finally, due to the hosting through GitHub Pages, the SPA behaviour is flawed. Accessing any page aside from home via URL (not routing within the website) will result in a 404. Viewing the site through localhost does nohttps://github.com/rafgraph/spa-github-pagest reflect these issues. Unfortunately this also means the custom 404 implementation is unable to be seen through GitHub Pages.
+Finally, due to the hosting through GitHub Pages, the SPA behaviour is flawed. Accessing any page aside from home via URL (not routing within the website) will result in a 404. Viewing the site through localhost does not reflect these issues. Unfortunately this also means the custom 404 implementation is unable to be seen through GitHub Pages.
 
 ## Areas of Pride
 Some elements are larger than others, but are elements I'm happy with the result of.
